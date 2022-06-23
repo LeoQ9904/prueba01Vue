@@ -31,10 +31,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods:{
+    async getArticulos() {
+        await axios({
+          method: 'get',
+          url: 'http://127.0.0.1:8000/api/articulos'
+        }).then(data=>{
+          console.log('me retorno', data)
+        })
+    }
+  },
+  mounted(){
+    this.getArticulos();
   }
 }
 </script>
